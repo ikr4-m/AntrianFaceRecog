@@ -6,7 +6,8 @@ public class _20221104_BaseDatabase : Migration
 {
     public override void Up()
     {
-        this.Create.Table("Initial");
+        this.Create.Table("Initial")
+            .WithColumn("id").AsInt64().NotNullable().Identity().PrimaryKey();
     }
 
     public override void Down()

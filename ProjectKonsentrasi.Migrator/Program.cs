@@ -8,6 +8,14 @@ public class Program
     static void Main(string[] args)
     {
         var service = CreateService();
+        using var scope = service.CreateScope();
+        var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
+
+        switch (args[0])
+        {
+            case "--up": runner.MigrateUp(); break;
+            case "--down": runner.MigrateDown(long.Parse(args[1] ?? "0")); break;
+        }
     }
 
     public static string GenerateConnectionString()
