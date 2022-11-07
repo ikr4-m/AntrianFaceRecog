@@ -11,7 +11,7 @@ public class _20221108_AdminLogin : Migration
             .WithColumn("Nama").AsString().NotNullable()
             .WithColumn("Email").AsString().NotNullable()
             .WithColumn("Password").AsString().NotNullable()
-            .WithColumn("CreatedAt").AsString().NotNullable();
+            .WithColumn("CreatedAt").AsString().NotNullable().WithDefault(SystemMethods.CurrentDateTime);
     }
 
     public override void Down()
