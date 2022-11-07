@@ -60,7 +60,7 @@ public class _20221106_DatabaseAntrian : Migration
     public override void Down()
     {
         this.Delete.Table("DataUmumPasien");
-        this.Delete.Table("ListKlinikPasien");
+        this.Delete.Table("ListKlinikTujuan");
         this.Delete.Table("DataPJPasien");
         this.Delete.Table("DataAlamatPasien");
     }
