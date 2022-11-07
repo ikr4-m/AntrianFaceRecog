@@ -13,6 +13,7 @@ public class Services
         builder.Services.AddSession(option =>
         {
             option.IdleTimeout = TimeSpan.FromSeconds(10);
+            option.Cookie.Name = ".Konsentrasi.Session";
             option.Cookie.HttpOnly = true;
             option.Cookie.IsEssential = true;
         });

@@ -1,3 +1,5 @@
+using ProjectKonsentrasi.Webserver.Extension;
+using ProjectKonsentrasi.Webserver.Models.View;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ProjectKonsentrasi.Webserver.Controllers;
@@ -20,22 +22,26 @@ public class AuthController : Controller
     public ActionResult Login([FromForm] IFormCollection form)
     {
         var data = new LoginStructure(form);
-        var message = "Password salah!";
-        var code = 500;
-        if (data.Email == "admin" && data.Password == "admin")
+        if (data.Email != "admin" && data.Password != "admin")
         {
-            message = "Passowrd benar!";
-            code = 200;
+            HttpContext.Response.StatusCode = 500;
+            return Json(new { Code = 500, Message = "Password Salah!" });
         }
 
-        HttpContext.Response.StatusCode = code;
-        return Json(new { Code = code, Message = message });
+        HttpContext.Session.Set<AuthCookie>("Login", new AuthCookie
+        {
+            ID = 1,
+            Nama = data.Email
+        });
+
+        return Json(new { Code = 200, Message = "Password benar, anda telah login!" });
     }
 
 
-    [HttpPost("auth/logout")]
-    public IActionResult Logout()
+    [HttpGet("auth/logout")]
+    public ActionResult Logout()
     {
-        return View();
+        HttpContext.Session.Clear();
+        return RedirectToAction("Index", "Login");
     }
 }
