@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
 using System.Text.Json;
 
-namespace ProjectKonsentrasi.Webserver.Extension;
+namespace ProjectKonsentrasi.Helper.Extension;
 public static class SessionExtensions
 {
     public static void Set<T>(this ISession session, string key, T value)
