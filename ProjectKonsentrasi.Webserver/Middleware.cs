@@ -7,5 +7,6 @@ public class Middleware
         app.UseRouting();
         app.UseAuthorization();
         app.MapControllers();
+        app.UseSession();
     }
 }
