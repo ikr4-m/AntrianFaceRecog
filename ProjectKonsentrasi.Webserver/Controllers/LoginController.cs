@@ -17,7 +17,7 @@ public class LoginController : Controller
     public async Task<IActionResult> Index()
     {
         if (!await IsAdminAvailable()) return RedirectToAction("SetAdmin", "Login");
-        if (IsLogin()) return Json(new { Message = "Anda telah login" });
+        if (IsLogin()) return View("Login/IndexIsLogin");
         return View();
     }
 

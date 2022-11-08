@@ -28,7 +28,7 @@ public class AuthController : Controller
             ID = data.ID,
             Nama = data.Nama
         });
-        return Json(new { Code = 200, Message = "Password benar, anda telah login!", Data = new { ID = data.ID, Nama = data.Nama } });
+        return RedirectToAction("Index", "Dashboard");
     }
 
 

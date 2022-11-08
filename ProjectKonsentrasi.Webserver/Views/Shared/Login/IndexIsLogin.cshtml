@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Akses Ditolak";
 }
 
 <div class="page page-center">
@@ -9,7 +9,9 @@
                 <h2 class="h2 text-center mb-4">Akses Ditolak</h2>
                 <p class="text-center">Anda telah login sebelumnya. Silahkan masuk di dashboard.</p>
                 <hr>
-                <button class="btn btn-primary w-100">Ke Dashboard</button>
+                <a asp-controller="Dashboard" asp-action="Index">
+                    <button class="btn btn-primary w-100">Ke Dashboard</button>
+                </a>
             </div>
         </div>
     </div>
