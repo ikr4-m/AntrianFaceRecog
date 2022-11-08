@@ -1,28 +1,34 @@
+using ProjectKonsentrasi.Webserver.Models.Database;
 using ProjectKonsentrasi.Webserver.Models.View;
+using ProjectKonsentrasi.Helper;
 using ProjectKonsentrasi.Helper.Extension;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjectKonsentrasi.Webserver.Controllers;
 [ApiController]
 public class AuthController : Controller
 {
+    private DBContext _db = new DBContext();
+
     [HttpPost("auth/login")]
-    public ActionResult Login([FromForm] IFormCollection form)
+    public async Task<ActionResult> Login([FromForm] IFormCollection form)
     {
-        var data = new LoginFormStructure(form);
-        if (data.Email != "admin" && data.Password != "admin")
+        var parseForm = new LoginFormStructure(form);
+        var password = MD5Factory.Generate(parseForm.Password);
+        var data = await _db.AdminUser.Where(x => x.Email == parseForm.Email && x.Password == password).FirstOrDefaultAsync();
+        if (data == null)
         {
-            HttpContext.Response.StatusCode = 500;
-            return Json(new { Code = 500, Message = "Password Salah!" });
+            TempData["Message"] = "Password salah, silahkan ulangi lagi";
+            return RedirectToAction("Login");
         }
 
         HttpContext.Session.Set<AuthCookie>("Login", new AuthCookie
         {
-            ID = 1,
-            Nama = data.Email
+            ID = data.ID,
+            Nama = data.Nama
         });
-
-        return Json(new { Code = 200, Message = "Password benar, anda telah login!" });
+        return Json(new { Code = 200, Message = "Password benar, anda telah login!", Data = new { ID = data.ID, Nama = data.Nama } });
     }
 
 
