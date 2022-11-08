@@ -12,7 +12,7 @@ public class Services
         builder.Services.AddDistributedMemoryCache();
         builder.Services.AddSession(option =>
         {
-            option.IdleTimeout = TimeSpan.FromSeconds(10);
+            option.IdleTimeout = TimeSpan.FromDays(30);
             option.Cookie.Name = ".Konsentrasi.Session";
             option.Cookie.HttpOnly = true;
             option.Cookie.IsEssential = true;
