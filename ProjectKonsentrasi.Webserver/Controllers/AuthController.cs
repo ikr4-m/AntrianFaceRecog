@@ -20,7 +20,7 @@ public class AuthController : Controller
         if (data == null)
         {
             TempData["Message"] = "Password salah, silahkan ulangi lagi";
-            return RedirectToAction("Login");
+            return RedirectToAction("Index", "Login");
         }
 
         HttpContext.Session.Set<AuthCookie>("Login", new AuthCookie
