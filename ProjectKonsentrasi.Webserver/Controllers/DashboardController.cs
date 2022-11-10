@@ -1,5 +1,5 @@
-using ProjectKonsentrasi.Helper;
-using ProjectKonsentrasi.Webserver.Models.Database;
+using ProjectKonsentrasi.Helper.Extension;
+using ProjectKonsentrasi.Webserver.Models.View;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ProjectKonsentrasi.Webserver.Controllers;
@@ -12,6 +12,7 @@ public class DashboardController : Controller
     public IActionResult Index()
     {
         if (!IsLogin()) return RedirectToAction("Index", "Login");
+        ViewData["User"] = HttpContext.Session.Get<AuthCookie>("Login")!.Nama;
         return View();
     }
 }
