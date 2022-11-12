@@ -1,0 +1,77 @@
+@{
+  bool isLogin = Context.Session.GetString("Login") != null;
+  Layout = "_Layout";
+}
+
+<div class="page">
+  <!-- Navbar -->
+  <header class="navbar navbar-expand-md navbar-light d-print-none">
+    <div class="container-xl">
+      <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3"><a href=".">
+      <p class="m-auto">Antrian Rumah Sakit</p></a></h1>
+      <div class="navbar-nav flex-row order-md-last">
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu"><img src="~/dist/img/user.png" alt="U" class="avatar avatar-sm"> @* *@
+          <div class="d-none d-xl-block ps-2">
+            <div>
+              @(ViewData["User"] ?? "Unknown")
+            </div>
+            <div class="mt-1 small text-muted">
+              @(isLogin ? "Status" : "Anda belum login")
+            </div>
+          </div></a>
+          @{
+            if (isLogin)
+            {
+              <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <a href="./settings.html" class="dropdown-item">Pengaturan</a>
+                <div class="dropdown-divider"></div><a asp-controller="Auth" asp-action="Logout" class="dropdown-item">Keluar</a>
+              </div>
+            }
+          }
+        </div>
+      </div>
+      <div class="collapse navbar-collapse" id="navbar-menu">
+        <div class="d-flex flex-column flex-md-row flex-fill align-items-stretch align-items-md-center">
+          <ul class="navbar-nav">
+            @RenderSection("Navbar", false)
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="page-wrapper">
+    <div class="page-header d-print-none">
+      <div class="container-xl">
+        <div class="row g-2 align-items-center">
+          <div class="col">
+            <!-- Page pre-title -->
+            <h2 class="page-title">@ViewData["Title"]</h2>
+          </div><!-- Page title actions -->
+          <div class="col-12 col-md-auto ms-auto d-print-none">
+            @RenderSection("ActionButton", false)
+          </div>
+        </div>
+      </div>
+    </div><!-- Page body -->
+    <div class="page-body">
+      @RenderSection("PageBody", false)
+    </div>
+    <footer class="footer footer-transparent d-print-none">
+      <div class="container-xl">
+        <div class="row text-center align-items-center flex-row-reverse">
+          <div class="col-lg-auto ms-lg-auto">
+            <ul class="list-inline list-inline-dots mb-0">
+              <li class="list-inline-item">Universitas Dipa Makassar</li>
+            </ul>
+          </div>
+          <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+            <ul class="list-inline list-inline-dots mb-0">
+              <li class="list-inline-item">Copyright © 2022 - Ikramullah | All rights reserved.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>

@@ -1,151 +1,62 @@
 @{
     ViewData["Title"] = "Dashboard";
+    Layout = "Dashboard/_Layout";
 }
 
-<div class="page">
-  <!-- Navbar -->
-  <header class="navbar navbar-expand-md navbar-light d-print-none">
-    <div class="container-xl">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-        <a href=".">
-          <p class="m-auto">Antrian Rumah Sakit</p>
-        </a>
-      </h1>
-      <div class="navbar-nav flex-row order-md-last">
-        <div class="nav-item dropdown">
-          <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-            <img src="~/dist/img/user.png" alt="U" class="avatar avatar-sm">
-            @* <span class="avatar avatar-sm" style="background-image: url(~/static/img/user.png)"></span> *@
-            <div class="d-none d-xl-block ps-2">
-              <div>@ViewData["User"]</div>
-              <div class="mt-1 small text-muted">Status</div>
+@section Navbar {
+  <li class="nav-item">
+    <a class="nav-link" asp-controller="Dashboard" asp-action="Index"><span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <polyline points="5 12 3 12 12 3 21 12 19 12"></polyline>
+    <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
+    <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path></svg></span> <span class="nav-link-title">Beranda</span></a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false"><span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
+     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3"></polyline>
+    <line x1="12" y1="12" x2="20" y2="7.5"></line>
+    <line x1="12" y1="12" x2="12" y2="21"></line>
+    <line x1="12" y1="12" x2="4" y2="7.5"></line>
+    <line x1="16" y1="5.25" x2="8" y2="9.75"></line></svg></span> <span class="nav-link-title">Interface</span></a>
+    <div class="dropdown-menu">
+      <div class="dropdown-menu-columns">
+        <div class="dropdown-menu-column">
+          <a class="dropdown-item" href="./empty.html">Empty page</a>
+          <div class="dropend">
+            <a class="dropdown-item dropdown-toggle" href="#sidebar-cards" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">Cards <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span></a>
+            <div class="dropdown-menu">
+              <a href="./cards.html" class="dropdown-item">Sample cards</a> <a href="./card-actions.html" class="dropdown-item">Card actions <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span></a> <a href="./cards-masonry.html" class="dropdown-item">Cards Masonry</a>
             </div>
-          </a>
-          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <a href="./settings.html" class="dropdown-item">Pengaturan</a>
-            <div class="dropdown-divider"></div>
-            <a asp-controller="Auth" asp-action="Logout" class="dropdown-item">Keluar</a>
           </div>
-        </div>
-      </div>
-      <div class="collapse navbar-collapse" id="navbar-menu">
-        <div class="d-flex flex-column flex-md-row flex-fill align-items-stretch align-items-md-center">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" asp-controller="Dashboard" asp-action="Index" >
-                <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="5 12 3 12 12 3 21 12 19 12" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
-                </span>
-                <span class="nav-link-title">
-                  Beranda
-                </span>
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
-                <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" /><line x1="12" y1="12" x2="20" y2="7.5" /><line x1="12" y1="12" x2="12" y2="21" /><line x1="12" y1="12" x2="4" y2="7.5" /><line x1="16" y1="5.25" x2="8" y2="9.75" /></svg>
-                </span>
-                <span class="nav-link-title">
-                  Interface
-                </span>
-              </a>
-              <div class="dropdown-menu">
-                <div class="dropdown-menu-columns">
-                  <div class="dropdown-menu-column">
-                    <a class="dropdown-item" href="./empty.html">
-                      Empty page
-                    </a>
-                    <div class="dropend">
-                      <a class="dropdown-item dropdown-toggle" href="#sidebar-cards" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
-                        Cards
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                      </a>
-                      <div class="dropdown-menu">
-                        <a href="./cards.html" class="dropdown-item">
-                          Sample cards
-                        </a>
-                        <a href="./card-actions.html" class="dropdown-item">
-                          Card actions
-                          <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                        </a>
-                        <a href="./cards-masonry.html" class="dropdown-item">
-                          Cards Masonry
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
-  </header>
-  <div class="page-wrapper">
-    <!-- Page header -->
-    <div class="page-header d-print-none">
-      <div class="container-xl">
-        <div class="row g-2 align-items-center">
-          <div class="col">
-            <!-- Page pre-title -->
-            <h2 class="page-title">
-              Legenda
-            </h2>
-          </div>
-          <!-- Page title actions -->
-          <div class="col-12 col-md-auto ms-auto d-print-none">
-            <div class="btn-list">
-              <span class="d-none d-sm-inline">
-                <a href="#" class="btn">
-                  New view
-                </a>
-              </span>
-              <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report">
-                <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
-                Create new report
-              </a>
-              <a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report" aria-label="Create new report">
-                <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
-              </a>
-            </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Page body -->
-        <div class="page-body">
-          <div class="container-xl">
-            <div class="card">
-              <div class="card-body">
-                <p>Test</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <footer class="footer footer-transparent d-print-none">
-          <div class="container-xl">
-            <div class="row text-center align-items-center flex-row-reverse">
-              <div class="col-lg-auto ms-lg-auto">
-                <ul class="list-inline list-inline-dots mb-0">
-                  <li class="list-inline-item">Universitas Dipa Makassar</li>
-                </ul>
-              </div>
-              <div class="col-12 col-lg-auto mt-3 mt-lg-0">
-                <ul class="list-inline list-inline-dots mb-0">
-                  <li class="list-inline-item">
-                    Copyright &copy; 2022 - Ikramullah | All rights reserved.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </footer>
+  </li>
+}
+
+@section ActionButton {
+  <div class="btn-list">
+    <span class="d-none d-sm-inline"><a href="#" class="btn">New view</a></span> <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report"><!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <line x1="12" y1="5" x2="12" y2="19"></line>
+    <line x1="5" y1="12" x2="19" y2="12"></line></svg> Create new report</a> <a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report" aria-label="Create new report"><!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <line x1="12" y1="5" x2="12" y2="19"></line>
+    <line x1="5" y1="12" x2="19" y2="12"></line></svg></a>
+  </div>
+}
+
+@section PageBody {
+  <div class="container-xl">
+    <div class="card">
+      <div class="card-body">
+        <p>Test</p>
       </div>
     </div>
+  </div>
+}
