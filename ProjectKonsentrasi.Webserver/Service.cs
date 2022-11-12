@@ -8,6 +8,9 @@ public class Services
         // Connect controllers with views
         builder.Services.AddControllersWithViews();
 
+        // Enable razor views
+        builder.Services.AddRazorPages();
+
         // Session service
         builder.Services.AddDistributedMemoryCache();
         builder.Services.AddSession(option =>

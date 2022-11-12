@@ -10,6 +10,7 @@ public class Middleware
         app.UseAuthorization();
         app.MapControllers();
         app.UseSession();
+        app.MapRazorPages();
 
         // Dashboard middleware
         app.Use(async (context, next) =>
