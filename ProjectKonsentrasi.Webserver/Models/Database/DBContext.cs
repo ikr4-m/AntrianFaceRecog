@@ -5,6 +5,7 @@ namespace ProjectKonsentrasi.Webserver.Models.Database;
 public class DBContext : DbContext
 {
     public DbSet<AdminUser> AdminUser => Set<AdminUser>();
+    public DbSet<ListKlinikTujuan> ListKlinikTujuan => Set<ListKlinikTujuan>();
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
     {
