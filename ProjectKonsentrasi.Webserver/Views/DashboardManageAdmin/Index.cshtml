@@ -37,10 +37,6 @@
               <div class="container">
                 <div class="row">
                   <input type="hidden" name="ID" value="@(action == "Ubah" ? dataModified!.ID : "")">
-                  <div class="col-md-12 col-xl-6 mb-3">
-                    <label class="form-label">Nama Klinik</label>
-                    <input type="text" class="form-control" name="NamaKlinik"  value="@(action == "Ubah" ? dataModified!.NamaKlinik : "")">    
-                  </div>
                 </div>
               </div>
             </div>
@@ -77,7 +73,6 @@
                   {
                     <tr>
                       <td>@data.ID</td>
-                      <td>@data.NamaKlinik</td>
                       <td>
                         <button onclick="window.location = '?id=@data.ID'" class="btn btn-secondary">Edit</button>
                         <button onclick="hapusData(@data.ID)" class="btn btn-danger">Hapus</button>

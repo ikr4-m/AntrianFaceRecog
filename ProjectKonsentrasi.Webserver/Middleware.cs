@@ -1,4 +1,5 @@
 using ProjectKonsentrasi.Helper.Extension;
+using ProjectKonsentrasi.Webserver.Models.View;
 
 namespace ProjectKonsentrasi.Webserver;
 public class Middleware
@@ -21,6 +22,9 @@ public class Middleware
             }
             else
             {
+                var loginSession = context.Session.Get<AuthCookie>("Login");
+                if (loginSession != null) context.Items.Add("User", loginSession.Nama);
+
                 await next(context);
             }
         });

@@ -12,7 +12,6 @@ public class DashboardManageClinicController : Controller
     [HttpGet("dashboard/manage_clinic")]
     public async Task<IActionResult> Index([FromQuery] ulong? id)
     {
-        ViewData["User"] = HttpContext.Session.Get<AuthCookie>("Login")!.Nama;
         ViewData["Data"] = await _db.ListKlinikTujuan.ToListAsync();
         ViewData["DataModified"] = await _db.ListKlinikTujuan.Where(x => x.ID == id).FirstOrDefaultAsync();
         ViewBag.IsCRUD = id != null;

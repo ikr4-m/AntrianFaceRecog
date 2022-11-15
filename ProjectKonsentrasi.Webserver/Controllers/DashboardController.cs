@@ -8,7 +8,6 @@ public class DashboardController : Controller
     [HttpGet("dashboard")]
     public IActionResult Index()
     {
-        ViewData["User"] = HttpContext.Session.Get<AuthCookie>("Login")!.Nama;
         return View();
     }
 }
