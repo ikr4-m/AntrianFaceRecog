@@ -36,10 +36,11 @@
             <div class="card-body">
               <div class="container">
                 <div class="row">
-                  <div class="col-md-12 col-xl-6 mb-3">
+                  <input type="hidden" name="ID" value="@(action == "Ubah" ? dataModified!.ID : "")">
+                  @* <div class="col-md-12 col-xl-6 mb-3">
                     <label class="form-label">ID</label>
                     <input type="text" class="form-control" name="ID" value="@(action == "Ubah" ? dataModified!.ID : "")" readonly>    
-                  </div>
+                  </div> *@
                   <div class="col-md-12 col-xl-6 mb-3">
                     <label class="form-label">Nama Klinik</label>
                     <input type="text" class="form-control" name="NamaKlinik"  value="@(action == "Ubah" ? dataModified!.NamaKlinik : "")">    
