@@ -1,6 +1,7 @@
 using ProjectKonsentrasi.Helper;
 using ProjectKonsentrasi.Helper.Extension;
 using ProjectKonsentrasi.Webserver.Models.Database;
+using ProjectKonsentrasi.Webserver.Models.View;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,7 +14,8 @@ public class DashboardManageAdminController : Controller
     [HttpGet("dashboard/manage_admin")]
     public async Task<IActionResult> Index([FromQuery] ulong? id)
     {
-        ViewData["Data"] = await _db.AdminUser.Where(x => x.Nama != _DefaultAdminName).ToListAsync();
+        var idSession = HttpContext.Session.Get<AuthCookie>("Login")!.ID;
+        ViewData["Data"] = await _db.AdminUser.Where(x => x.Nama != _DefaultAdminName && x.ID != idSession).ToListAsync();
         ViewData["DataModified"] = await _db.AdminUser.Where(x => x.ID == id).FirstOrDefaultAsync();
         ViewBag.IsCRUD = id != null;
         return View();
@@ -22,10 +24,16 @@ public class DashboardManageAdminController : Controller
     [HttpPost("dashboard/manage_admin/add")]
     public async Task<IActionResult> AddData([FromForm] IFormCollection form)
     {
+        var ifEmailExist = await _db.AdminUser.Where(x => x.Email == form.Get("Email")).FirstOrDefaultAsync() != null;
+        if (ifEmailExist)
+        {
+            TempData["Message"] = "Email tidak boleh kembar!";
+            return RedirectToAction("Index", this);
+        }
         if (form.Get("Nama") == _DefaultAdminName)
         {
             TempData["Message"] = "Admin utama tidak boleh ada yang kembar!";
-            return View();
+            return RedirectToAction("Index", this);
         }
 
         await _db.AdminUser.AddAsync(new AdminUser
@@ -37,19 +45,22 @@ public class DashboardManageAdminController : Controller
         await _db.SaveChangesAsync();
 
         TempData["Message"] = "Data telah ditambahkan!";
-        return View();
+        return RedirectToAction("Index", this);
     }
 
     [HttpPost("dashboard/manage_admin/edit")]
     public async Task<IActionResult> EditData([FromForm] IFormCollection form)
     {
-        _db.AdminUser.Update(new AdminUser
+        var data = new AdminUser
         {
             ID = ulong.Parse(form.Get("ID") ?? "0"),
             Nama = form.Get("Nama"),
             Email = form.Get("Email"),
-            Password = MD5Factory.Generate(form.Get("Password"))
-        });
+        };
+        var password = form.Get("Password");
+        if (password != "") data.Password = MD5Factory.Generate(password);
+
+        _db.AdminUser.Update(data);
         await _db.SaveChangesAsync();
 
         TempData["Message"] = "Data telah diubah!";

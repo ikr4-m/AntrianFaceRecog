@@ -28,7 +28,7 @@
     @{
       if (ViewBag.IsCRUD)
       {
-        <form asp-controller="DashboardManageClinic" asp-action="@(action == "Tambah" ? "AddData" : "EditData")">
+        <form asp-controller="DashboardManageAdmin" asp-action="@(action == "Tambah" ? "AddData" : "EditData")">
           <div class="card mb-3" id="modal-modify-data">
             <div class="card-header">
               <h1>@action Data</h1>
@@ -37,12 +37,26 @@
               <div class="container">
                 <div class="row">
                   <input type="hidden" name="ID" value="@(action == "Ubah" ? dataModified!.ID : "")">
+                  <div class="col-md-12 col-xl-6 mb-3">
+                    <label class="form-label">Nama</label>
+                    <input type="text" class="form-control" name="Nama" value="@(action == "Ubah" ? dataModified!.Nama : "")" required>
+                  </div>
+                  <div class="col-md-12 col-xl-6 mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" name="Password">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 col-xl-6 mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="text" class="form-control" name="Email" value="@(action == "Ubah" ? dataModified!.Email : "")">
+                  </div>
                 </div>
               </div>
             </div>
             <div class="card-footer text-end">
               <div class="d-flex">
-                <a asp-controller="DashboardManageClinic" asp-action="Index" class="btn btn-link">Batal</a>
+                <a asp-controller="DashboardManageAdmin" asp-action="Index" class="btn btn-link">Batal</a>
                 <button type="submit" class="btn btn-primary ms-auto">@action</button>
               </div>
             </div>
@@ -63,7 +77,8 @@
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Nama Klinik</th>
+                  <th>Nama</th>
+                  <th>Email</th>
                   <th style="width: 20%;">Aksi</th>
                 </tr>
               </thead>
@@ -73,6 +88,8 @@
                   {
                     <tr>
                       <td>@data.ID</td>
+                      <td>@data.Nama</td>
+                      <td>@data.Email</td>
                       <td>
                         <button onclick="window.location = '?id=@data.ID'" class="btn btn-secondary">Edit</button>
                         <button onclick="hapusData(@data.ID)" class="btn btn-danger">Hapus</button>
@@ -98,7 +115,7 @@
 
       $.ajax({
         method: 'post',
-        url: '@Url.Action("DeleteData", "DashboardManageClinic")',
+        url: '@Url.Action("DeleteData", "DashboardManageAdmin")',
         data: {
           id: id
         },
