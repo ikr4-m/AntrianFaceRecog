@@ -23,7 +23,7 @@ public class DashboardManageClinicController : Controller
     {
         await _db.ListKlinikTujuan.AddAsync(new ListKlinikTujuan
         {
-            NamaKlinik = form["NamaKlinik"][0]
+            NamaKlinik = form.Get("NamaKlinik")
         });
         await _db.SaveChangesAsync();
 
@@ -36,8 +36,8 @@ public class DashboardManageClinicController : Controller
     {
         _db.ListKlinikTujuan.Update(new ListKlinikTujuan
         {
-            ID = ulong.Parse(form["ID"][0] ?? "0"),
-            NamaKlinik = form["NamaKlinik"][0]
+            ID = ulong.Parse(form.Get("NamaKlinik") ?? "0"),
+            NamaKlinik = form.Get("NamaKlinik")
         });
         await _db.SaveChangesAsync();
 
@@ -48,7 +48,7 @@ public class DashboardManageClinicController : Controller
     [HttpPost("dashboard/manage_clinic/delete")]
     public async Task<IActionResult> DeleteData([FromForm] IFormCollection form)
     {
-        ulong id = ulong.Parse(form["ID"][0] ?? "0");
+        ulong id = ulong.Parse(form.Get("NamaKlinik") ?? "0");
         var data = await _db.ListKlinikTujuan.Where(x => x.ID == id).FirstOrDefaultAsync();
         if (data == null)
         {

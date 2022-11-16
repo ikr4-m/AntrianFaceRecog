@@ -10,7 +10,7 @@ public class DashboardManageAdminController : Controller
     private DBContext _db = new DBContext();
     private const string _DefaultAdminName = "Admin";
 
-    [HttpGet("dashboard/manage_clinic")]
+    [HttpGet("dashboard/manage_admin")]
     public async Task<IActionResult> Index([FromQuery] ulong? id)
     {
         ViewData["Data"] = await _db.AdminUser.Where(x => x.Nama != _DefaultAdminName).ToListAsync();
@@ -19,7 +19,7 @@ public class DashboardManageAdminController : Controller
         return View();
     }
 
-    [HttpPost("dashboard/manage_clinic/add")]
+    [HttpPost("dashboard/manage_admin/add")]
     public async Task<IActionResult> AddData([FromForm] IFormCollection form)
     {
         if (form.Get("Nama") == _DefaultAdminName)
@@ -40,7 +40,7 @@ public class DashboardManageAdminController : Controller
         return View();
     }
 
-    [HttpPost("dashboard/manage_clinic/edit")]
+    [HttpPost("dashboard/manage_admin/edit")]
     public async Task<IActionResult> EditData([FromForm] IFormCollection form)
     {
         _db.AdminUser.Update(new AdminUser
@@ -56,7 +56,7 @@ public class DashboardManageAdminController : Controller
         return RedirectToAction("Index", this);
     }
 
-    [HttpPost("dashboard/manage_clinic/delete")]
+    [HttpPost("dashboard/manage_admin/delete")]
     public async Task<IActionResult> DeleteData([FromForm] IFormCollection form)
     {
         var data = await _db.AdminUser
