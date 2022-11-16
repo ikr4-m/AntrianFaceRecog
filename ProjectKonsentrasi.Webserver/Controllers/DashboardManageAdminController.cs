@@ -60,7 +60,7 @@ public class DashboardManageAdminController : Controller
     public async Task<IActionResult> DeleteData([FromForm] IFormCollection form)
     {
         var data = await _db.AdminUser
-            .Where(x => x.ID == ulong.Parse(form["ID"][0]))
+            .Where(x => x.ID == ulong.Parse(form.Get("ID")))
             .FirstOrDefaultAsync();
         if (data == null)
         {

@@ -36,7 +36,7 @@ public class DashboardManageClinicController : Controller
     {
         _db.ListKlinikTujuan.Update(new ListKlinikTujuan
         {
-            ID = ulong.Parse(form.Get("NamaKlinik") ?? "0"),
+            ID = ulong.Parse(form.Get("ID") ?? "0"),
             NamaKlinik = form.Get("NamaKlinik")
         });
         await _db.SaveChangesAsync();
