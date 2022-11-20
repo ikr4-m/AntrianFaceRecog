@@ -48,8 +48,9 @@ public class DashboardManageClinicController : Controller
     [HttpPost("dashboard/manage_clinic/delete")]
     public async Task<IActionResult> DeleteData([FromForm] IFormCollection form)
     {
-        ulong id = ulong.Parse(form.Get("NamaKlinik") ?? "0");
-        var data = await _db.ListKlinikTujuan.Where(x => x.ID == id).FirstOrDefaultAsync();
+        var data = await _db.ListKlinikTujuan
+            .Where(x => x.ID == ulong.Parse(form.Get("ID")))
+            .FirstOrDefaultAsync();
         if (data == null)
         {
             return StatusCode(404, new { Message = "Not found" });
