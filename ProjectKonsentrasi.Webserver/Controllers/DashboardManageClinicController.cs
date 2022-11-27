@@ -1,6 +1,5 @@
 using ProjectKonsentrasi.Helper.Extension;
 using ProjectKonsentrasi.Webserver.Models.Database;
-using ProjectKonsentrasi.Webserver.Models.View;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 
