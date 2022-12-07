@@ -1,4 +1,5 @@
 using ProjectKonsentrasi.Webserver.Models.Database;
+using Microsoft.AspNetCore.SignalR;
 
 namespace ProjectKonsentrasi.Webserver;
 public class Services
@@ -10,6 +11,9 @@ public class Services
 
         // Enable razor views
         builder.Services.AddRazorPages();
+
+        // Add SignalR service
+        builder.Services.AddSignalR();
 
         // Session service
         builder.Services.AddDistributedMemoryCache();

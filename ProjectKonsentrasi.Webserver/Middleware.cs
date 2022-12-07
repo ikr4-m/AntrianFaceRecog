@@ -1,4 +1,5 @@
 using ProjectKonsentrasi.Helper.Extension;
+using ProjectKonsentrasi.Hubs;
 using ProjectKonsentrasi.Webserver.Models.View;
 
 namespace ProjectKonsentrasi.Webserver;
@@ -12,6 +13,9 @@ public class Middleware
         app.MapControllers();
         app.UseSession();
         app.MapRazorPages();
+
+        // SignalR Router
+        app.MapHub<FaceRecognitionHub>("/facereg");
 
         // Dashboard middleware
         app.Use(async (context, next) =>
