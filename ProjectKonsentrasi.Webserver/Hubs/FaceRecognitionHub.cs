@@ -14,4 +14,15 @@ public class FaceRecognitionHub : Hub
         });
         await Clients.All.SendAsync("ReceiveMessage", json);
     }
+
+    public async Task BroadcastCheckFace(ulong id, string name)
+    {
+        string json = JsonSerializer.Serialize(new
+        {
+            ConnectionID = Context.ConnectionId,
+            ID = id,
+            Name = name
+        });
+        await Clients.All.SendAsync("ReceiveMessage", json);
+    }
 }

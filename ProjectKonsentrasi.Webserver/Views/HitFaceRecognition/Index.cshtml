@@ -15,6 +15,7 @@
     <div class="card">
       <div class="card-body">
         <p>Listener goes here!</p>
+        <p id="detected-face">Belum ada muka yang terdeteksi</p>
       </div>
     </div>
   </div>
@@ -29,6 +30,9 @@
       client.on('ReceiveMessage', (data) => {
         data = JSON.parse(data)
         console.log(data)
+        if (data.User !== "FaceReg" || data.Message === "0") return
+
+        $('#detected-face').text(`Muka yang terdeteksi adalah ${data.Message}`)
       })
 
       client.start()
