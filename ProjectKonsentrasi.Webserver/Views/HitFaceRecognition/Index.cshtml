@@ -1,0 +1,41 @@
+@{
+    ViewData["Title"] = "Listener Face Recognition";
+    Layout = "Dashboard/_Layout";
+
+    string url = ViewData["HubURL"] as string ?? "";
+}
+
+@section Navbar {
+  <partial name="Home/Navbar" />
+}
+
+@section PageBody {
+  <script src="~/dist/libs/signalr/signalr.min.js"></script>
+  <div class="container-xl">
+    <div class="card">
+      <div class="card-body">
+        <p>Listener goes here!</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(() => {
+      const client = new signalR.HubConnectionBuilder()
+        .withUrl('@url')
+        .configureLogging(signalR.LogLevel.Information)
+        .build()
+      
+      client.on('ReceiveMessage', (data) => {
+        data = JSON.parse(data)
+        console.log(data)
+      })
+
+      client.start()
+        .then(() => {
+          client.send('BroadcastMessage', 'WebListener', 'Heads off, Webserver Listener is ready!')
+          console.log('Listener ready')
+        })
+    })
+  </script>
+}
