@@ -7,12 +7,12 @@ import os
 import requests
 import numpy as np
 
-# Parse argumen sebelum dijalankan
-parser = argparse.ArgumentParser(description='Menjalankan deteksi muka')
-parser.add_argument('url', type=str, help='URL dari webserver')
-args = parser.parse_args()
+# Buka URL tempat endpoint
+url = ""
+with open('./url', 'rb') as f: url = f"http://{f.read().rstrip().decode('utf-8')}"
 
 # Final variabel
+ENDPOINT_URL = url
 DATASET_FOLDER_PATH = 'dataset'
 DATASET_FILE_NAME = f'dataset_faces_{datetime.date.today()}.dat'
 SAMPLING_FACE_JITTER = 20
@@ -64,7 +64,7 @@ dump_face_name = {}
 face_name_detected = []
 frame_count = 0
 print('Spawning CV2')
-requests.get(f'{args.url}?id={0}')
+requests.get(f'{ENDPOINT_URL}/facereg_endpoint?id={0}')
 
 
 """
@@ -82,7 +82,7 @@ def verify_face(name: str) -> any:
     if dump_face_name[name] == SAFE_FRAME_COUNT:
         face_name_detected.append(name)
         del dump_face_name[name]
-        requests.get(f'{args.url}?id={name}')
+        requests.get(f'{ENDPOINT_URL}/facereg_endpoint?id={name}')
 
 # Part 4
 # Jalankan deteksi muka
