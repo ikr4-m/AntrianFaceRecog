@@ -87,7 +87,7 @@ def verify_face(name: str) -> any:
 # Part 4
 # Jalankan deteksi muka
 while True:
-    ret, frame = video.read()
+    frame = video.read()[1]
     frame_count += 1
 
     # Proses tiap FRAME_SKIPPED
