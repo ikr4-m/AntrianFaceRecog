@@ -21,13 +21,13 @@
         <div class="row">
           <div class="col-md-12 col-xl-6 mb-3 p-3">
             <label class="form-label">NIK</label>
-            <input type="number" class="form-control" name="NIK" id="nik" required>
+            <input type="number" class="form-control" name="NIK" required autocomplete="off">
           </div>
         </div>
         <div class="row">
           <div class="col-md-12 col-xl-6 mb-3 p-3">
             <label class="form-label">Nama</label>
-            <input type="text" name="nama" id="Nama" class="form-control" required>
+            <input type="text" id="Nama" class="form-control" required autocomplete="off">
           </div>
           <div class="col-md-12 col-xl-6 mb-3 p-3">
             <label class="form-label">Jenis Kelamin</label>
@@ -46,15 +46,12 @@
         <div class="row">
           <div class="col-md-12 col-xl-6 mb-3 p-3">
             <label class="form-label">Tempat Lahir</label>
-            <input type="text" name="nama" id="TempatLahir" class="form-control" required>
+            <input type="text" name="TempatLahir" class="form-control" required autocomplete="off">
           </div>
           <div class="col-md-12 col-xl-6 mb-3 p-3">
-            <label class="form-label">Tanggal Lahir</label>
+            <label class="form-label">Tanggal Lahir (Hari/Bulan/Tahun)</label>
             <div class="input-icon mb-2">
-              <input type="text" name="TanggalLahir" class="form-control" data-mask="00/00/0000" data-mask-visible="true" placeholder='@DateTime.Now.ToString("dd/MM/yyyy")' autocomplete="off" required/>
-              <span class="input-icon-addon">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="5" width="16" height="16" rx="2" /><line x1="16" y1="3" x2="16" y2="7" /><line x1="8" y1="3" x2="8" y2="7" /><line x1="4" y1="11" x2="20" y2="11" /><line x1="11" y1="15" x2="12" y2="15" /><line x1="12" y1="15" x2="12" y2="18" /></svg>
-              </span>
+              <input type="text" name="TanggalLahir" class="form-control" data-mask="00/00/0000" data-mask-visible="true" autocomplete="off" required/>
             </div>
           </div>
         </div>
@@ -113,7 +110,7 @@
         <div class="row">
           <div class="col-md-12 col-xl-6 mb-3 p-3">
             <label class="form-label">No Telp</label>
-            <input type="number" class="form-control" name="NoTelp" id="NoTelp" required>
+            <input type="number" class="form-control" name="NoTelp" id="NoTelp" required autocomplete="off">
           </div>
           <div class="col-md-12 col-xl-6 mb-3 p-3">
             <label class="form-label">Kewarganegaraan</label>
@@ -191,12 +188,108 @@
 
     <div class="card my-2">
       <div class="card-body">
-        <p>Reserved for alamat, mager vos</p>
+
+        <div class="row">
+          <div class="col-md-12 mb-3 p-3">
+            <label class="form-label">Alamat Pasien</label>
+            <input type="text" class="form-control" name="AlamatPasien" required autocomplete="off">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-xl-6 mb-3 p-3">
+            <label class="form-label">RT/RW</label>
+            <div class="input-icon mb-2">
+              <input type="text" name="RTRWPasien" class="form-control" data-mask="000/000" data-mask-visible="true" autocomplete="off" required/>
+            </div>
+          </div>
+          <div class="col-md-12 col-xl-6 mb-3 p-3">
+            <label class="form-label">Kelurahan</label>
+            <input type="text" name="KelurahanPasien" class="form-control" required autocomplete="off">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-xl-6 mb-3 p-3">
+            <label class="form-label">Kecamatan</label>
+            <input type="text" name="KecamatanPasien" class="form-control" required autocomplete="off">
+          </div>
+          <div class="col-md-12 col-xl-6 mb-3 p-3">
+            <label class="form-label">Kota</label>
+            <input type="text" name="KotaPasien" class="form-control" required autocomplete="off">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card my-2">
+      <div class="card-body">
+
+        <div class="row">
+          <div class="col-md-12 col-xl-6 mb-3 p-3">
+            <label class="form-label">Nama Penanggung Jawab</label>
+            <input type="text" name="NamaPJ" class="form-control" required autocomplete="off">
+          </div>
+          <div class="col-md-12 col-xl-6 mb-3 p-3">
+            <label class="form-label">No Telp</label>
+            <input type="number" class="form-control" name="NoTelp" id="NoTelp" required autocomplete="off">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-xl-6 mb-3 p-3">
+            <label class="form-label">Apakah alamat penanggung jawab sama dengan pasien?</label>
+            <div>
+              <label class="form-check form-check-inline mt-2">
+                <input class="form-check-input" type="radio" name="AlamatPJPrompt" value="0" checked>
+                <span class="form-check-label">Ya</span>
+              </label>
+              <label class="form-check form-check-inline mt-2">
+                <input class="form-check-input" type="radio" name="AlamatPJPrompt" value="1">
+                <span class="form-check-label">Tidak</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div id="AlamatPJ" style="display: none;">
+          <div class="row">
+            <div class="col-md-12 mb-3 p-3">
+              <label class="form-label">Alamat Penanggung Jawab</label>
+              <input type="text" class="form-control" name="AlamatPJ" required autocomplete="off">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-xl-6 mb-3 p-3">
+              <label class="form-label">RT/RW</label>
+              <div class="input-icon mb-2">
+                <input type="text" name="RTRWPJ" class="form-control" data-mask="000/000" data-mask-visible="true" autocomplete="off" required/>
+              </div>
+            </div>
+            <div class="col-md-12 col-xl-6 mb-3 p-3">
+              <label class="form-label">Kelurahan</label>
+              <input type="text" name="KelurahanPJ" class="form-control" required autocomplete="off">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-xl-6 mb-3 p-3">
+              <label class="form-label">Kecamatan</label>
+              <input type="text" name="KecamatanPJ" class="form-control" required autocomplete="off">
+            </div>
+            <div class="col-md-12 col-xl-6 mb-3 p-3">
+              <label class="form-label">Kota</label>
+              <input type="text" name="KotaPJ" class="form-control" required autocomplete="off">
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 
   <script>
-    console.log("Reserved for JSON register")
+    $(() => {
+      $('input:radio[name="AlamatPJPrompt"]').change(evt => {
+        const val = $(evt.target).filter(':checked').val().toString() === "1"
+        $('#AlamatPJ').css('display', val ? 'block' : 'none')
+      })
+    })
   </script>
 }
