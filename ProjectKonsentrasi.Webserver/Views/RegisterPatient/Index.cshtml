@@ -8,302 +8,311 @@
 }
 
 @section PageBody {
-  <div class="container-xl">
-    <div class="card my-2">
-      <div class="card-body">
-        <p>Silahkan diisi data-data di bawah ini dengan baik dan benar.</p>
+  <form asp-controller="RegisterPatient" asp-action="TakePicture" method="post">
+    <div class="container-xl">
+      <div class="card my-2">
+        <div class="card-body">
+          <p>Silahkan diisi data-data di bawah ini dengan baik dan benar.</p>
+        </div>
       </div>
-    </div>
 
-    <div class="card my-2">
-      <div class="card-body">
+      <div class="card my-2">
+        <div class="card-body">
 
-        <div class="row">
-          <div class="col-md-12 col-xl-6 mb-3 p-3">
-            <label class="form-label">NIK</label>
-            <input type="number" class="form-control" name="NIK" required autocomplete="off">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 col-xl-6 mb-3 p-3">
-            <label class="form-label">Nama</label>
-            <input type="text" name="Nama" class="form-control" required autocomplete="off">
-          </div>
-          <div class="col-md-12 col-xl-6 mb-3 p-3">
-            <label class="form-label">Jenis Kelamin</label>
-            <div>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="JenisKelamin" value="Laki-laki">
-                <span class="form-check-label">Laki-laki</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="JenisKelamin" value="Perempuan">
-                <span class="form-check-label">Perempuan</span>
-              </label>
+          <div class="row">
+            <div class="col-md-12 col-xl-6 mb-3 p-3">
+              <label class="form-label">NIK</label>
+              <input type="number" class="form-control" name="NIK" required autocomplete="off">
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 col-xl-6 mb-3 p-3">
-            <label class="form-label">Tempat Lahir</label>
-            <input type="text" name="TempatLahir" class="form-control" required autocomplete="off">
-          </div>
-          <div class="col-md-12 col-xl-6 mb-3 p-3">
-            <label class="form-label">Tanggal Lahir (Hari/Bulan/Tahun)</label>
-            <div class="input-icon mb-2">
-              <input type="text" name="TanggalLahir" class="form-control" data-mask="00/00/0000" data-mask-visible="true" autocomplete="off" required/>
+          <div class="row">
+            <div class="col-md-12 col-xl-6 mb-3 p-3">
+              <label class="form-label">Nama</label>
+              <input type="text" name="Nama" class="form-control" required autocomplete="off">
+            </div>
+            <div class="col-md-12 col-xl-6 mb-3 p-3">
+              <label class="form-label">Jenis Kelamin</label>
+              <div>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="JenisKelamin" value="Laki-laki">
+                  <span class="form-check-label">Laki-laki</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="JenisKelamin" value="Perempuan">
+                  <span class="form-check-label">Perempuan</span>
+                </label>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 col-xl-6 mb-3 p-3">
-            <label class="form-label">Agama</label>
-            <div>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="Agama" value="0">
-                <span class="form-check-label">Islam</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="Agama" value="1">
-                <span class="form-check-label">Kristen</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="Agama" value="2">
-                <span class="form-check-label">Katholik</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="Agama" value="3">
-                <span class="form-check-label">Hindhu</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="Agama" value="4">
-                <span class="form-check-label">Buddha</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="Agama" value="5">
-                <span class="form-check-label">Lain-lain</span>
-              </label>
+          <div class="row">
+            <div class="col-md-12 col-xl-6 mb-3 p-3">
+              <label class="form-label">Tempat Lahir</label>
+              <input type="text" name="TempatLahir" class="form-control" required autocomplete="off">
+            </div>
+            <div class="col-md-12 col-xl-6 mb-3 p-3">
+              <label class="form-label">Tanggal Lahir (Hari/Bulan/Tahun)</label>
+              <div class="input-icon mb-2">
+                <input type="text" name="TanggalLahir" class="form-control" data-mask="00/00/0000" data-mask-visible="true" autocomplete="off" required/>
+              </div>
             </div>
           </div>
-          <div class="col-md-12 col-xl-6 mb-3 p-3">
-            <label class="form-label">Status Pernikahan</label>
-            <div>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="StatusPerkawinan" value="0">
-                <span class="form-check-label">Kawin</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="StatusPerkawinan" value="1">
-                <span class="form-check-label">Belum Kawin</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="StatusPerkawinan" value="2">
-                <span class="form-check-label">Janda</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="StatusPerkawinan" value="3">
-                <span class="form-check-label">Duda</span>
-              </label>
+          <div class="row">
+            <div class="col-md-12 col-xl-6 mb-3 p-3">
+              <label class="form-label">Agama</label>
+              <div>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="Agama" value="0">
+                  <span class="form-check-label">Islam</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="Agama" value="1">
+                  <span class="form-check-label">Kristen</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="Agama" value="2">
+                  <span class="form-check-label">Katholik</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="Agama" value="3">
+                  <span class="form-check-label">Hindhu</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="Agama" value="4">
+                  <span class="form-check-label">Buddha</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="Agama" value="5">
+                  <span class="form-check-label">Lain-lain</span>
+                </label>
+              </div>
+            </div>
+            <div class="col-md-12 col-xl-6 mb-3 p-3">
+              <label class="form-label">Status Pernikahan</label>
+              <div>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="StatusPerkawinan" value="0">
+                  <span class="form-check-label">Kawin</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="StatusPerkawinan" value="1">
+                  <span class="form-check-label">Belum Kawin</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="StatusPerkawinan" value="2">
+                  <span class="form-check-label">Janda</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="StatusPerkawinan" value="3">
+                  <span class="form-check-label">Duda</span>
+                </label>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 col-xl-6 mb-3 p-3">
-            <label class="form-label">No Telp</label>
-            <input type="number" class="form-control" name="NoTelp" id="NoTelp" required autocomplete="off">
-          </div>
-          <div class="col-md-12 col-xl-6 mb-3 p-3">
-            <label class="form-label">Kewarganegaraan</label>
-            <div>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="Kewarganegaraan" value="0">
-                <span class="form-check-label">WNA</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="Kewarganegaraan" value="0">
-                <span class="form-check-label">WNI</span>
-              </label>
+          <div class="row">
+            <div class="col-md-12 col-xl-6 mb-3 p-3">
+              <label class="form-label">No Telp</label>
+              <input type="number" class="form-control" name="NoTelp" id="NoTelp" required autocomplete="off">
+            </div>
+            <div class="col-md-12 col-xl-6 mb-3 p-3">
+              <label class="form-label">Kewarganegaraan</label>
+              <div>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="Kewarganegaraan" value="0">
+                  <span class="form-check-label">WNA</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="Kewarganegaraan" value="0">
+                  <span class="form-check-label">WNI</span>
+                </label>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 col-xl-6 mb-3 p-3">
-            <label class="form-label">Pendidikan Terakhir</label>
-            <div>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="PendidikanTerakhir" value="0">
-                <span class="form-check-label">Tidak Sekolah</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="PendidikanTerakhir" value="1">
-                <span class="form-check-label">SD</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="PendidikanTerakhir" value="2">
-                <span class="form-check-label">SMP</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="PendidikanTerakhir" value="3">
-                <span class="form-check-label">SMA</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="PendidikanTerakhir" value="4">
-                <span class="form-check-label">Diploma/Sarjana</span>
-              </label>
+          <div class="row">
+            <div class="col-md-12 col-xl-6 mb-3 p-3">
+              <label class="form-label">Pendidikan Terakhir</label>
+              <div>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="PendidikanTerakhir" value="0">
+                  <span class="form-check-label">Tidak Sekolah</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="PendidikanTerakhir" value="1">
+                  <span class="form-check-label">SD</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="PendidikanTerakhir" value="2">
+                  <span class="form-check-label">SMP</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="PendidikanTerakhir" value="3">
+                  <span class="form-check-label">SMA</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="PendidikanTerakhir" value="4">
+                  <span class="form-check-label">Diploma/Sarjana</span>
+                </label>
+              </div>
+            </div>
+            <div class="col-md-12 col-xl-6 mb-3 p-3">
+              <label class="form-label">Pekerjaan</label>
+              <div>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="Pekerjaan" value="0">
+                  <span class="form-check-label">PNS</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="Pekerjaan" value="1">
+                  <span class="form-check-label">Pedagang</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="Pekerjaan" value="2">
+                  <span class="form-check-label">TNI/POLRI</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="Pekerjaan" value="3">
+                  <span class="form-check-label">Pelajar/Mahasiswa</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="Pekerjaan" value="4">
+                  <span class="form-check-label">Karyawan</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="Pekerjaan" value="5">
+                  <span class="form-check-label">Lain-lain</span>
+                </label>
+              </div>
             </div>
           </div>
-          <div class="col-md-12 col-xl-6 mb-3 p-3">
-            <label class="form-label">Pekerjaan</label>
-            <div>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="Pekerjaan" value="0">
-                <span class="form-check-label">PNS</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="Pekerjaan" value="1">
-                <span class="form-check-label">Pedagang</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="Pekerjaan" value="2">
-                <span class="form-check-label">TNI/POLRI</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="Pekerjaan" value="3">
-                <span class="form-check-label">Pelajar/Mahasiswa</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="Pekerjaan" value="4">
-                <span class="form-check-label">Karyawan</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="Pekerjaan" value="5">
-                <span class="form-check-label">Lain-lain</span>
-              </label>
-            </div>
-          </div>
-        </div>
 
+        </div>
       </div>
-    </div>
 
-    <div class="card my-2">
-      <div class="card-body">
+      <div class="card my-2">
+        <div class="card-body">
 
-        <div class="row">
-          <div class="col-md-12 mb-3 p-3">
-            <label class="form-label">Alamat Pasien</label>
-            <input type="text" class="form-control" name="AlamatPasien" required autocomplete="off">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 col-xl-6 mb-3 p-3">
-            <label class="form-label">RT/RW</label>
-            <div class="input-icon mb-2">
-              <input type="text" name="RTRWPasien" class="form-control" data-mask="000/000" data-mask-visible="true" autocomplete="off" required/>
-            </div>
-          </div>
-          <div class="col-md-12 col-xl-6 mb-3 p-3">
-            <label class="form-label">Kelurahan</label>
-            <input type="text" name="KelurahanPasien" class="form-control" required autocomplete="off">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 col-xl-6 mb-3 p-3">
-            <label class="form-label">Kecamatan</label>
-            <input type="text" name="KecamatanPasien" class="form-control" required autocomplete="off">
-          </div>
-          <div class="col-md-12 col-xl-6 mb-3 p-3">
-            <label class="form-label">Kota</label>
-            <input type="text" name="KotaPasien" class="form-control" required autocomplete="off">
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="card my-2">
-      <div class="card-body">
-
-        <div class="row">
-          <div class="col-md-12 col-xl-6 mb-3 p-3">
-            <label class="form-label">Nama Penanggung Jawab</label>
-            <input type="text" name="NamaPJ" class="form-control" required autocomplete="off">
-          </div>
-          <div class="col-md-12 col-xl-6 mb-3 p-3">
-            <label class="form-label">No Telp</label>
-            <input type="number" class="form-control" name="NoTelp" id="NoTelp" required autocomplete="off">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 col-xl-6 mb-3 p-3">
-            <label class="form-label">Apakah alamat penanggung jawab sama dengan pasien?</label>
-            <div>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="AlamatPJPrompt" value="0" checked>
-                <span class="form-check-label">Ya</span>
-              </label>
-              <label class="form-check form-check-inline mt-2">
-                <input class="form-check-input" type="radio" name="AlamatPJPrompt" value="1">
-                <span class="form-check-label">Tidak</span>
-              </label>
-            </div>
-          </div>
-        </div>
-        <div id="AlamatPJ" style="display: none;">
           <div class="row">
             <div class="col-md-12 mb-3 p-3">
-              <label class="form-label">Alamat Penanggung Jawab</label>
-              <input type="text" class="form-control" name="AlamatPJ" required autocomplete="off">
+              <label class="form-label">Alamat Pasien</label>
+              <input type="text" class="form-control" name="AlamatPasien" required autocomplete="off">
             </div>
           </div>
           <div class="row">
             <div class="col-md-12 col-xl-6 mb-3 p-3">
               <label class="form-label">RT/RW</label>
               <div class="input-icon mb-2">
-                <input type="text" name="RTRWPJ" class="form-control" data-mask="000/000" data-mask-visible="true" autocomplete="off" required/>
+                <input type="text" name="RTRWPasien" class="form-control" data-mask="000/000" data-mask-visible="true" autocomplete="off" required/>
               </div>
             </div>
             <div class="col-md-12 col-xl-6 mb-3 p-3">
               <label class="form-label">Kelurahan</label>
-              <input type="text" name="KelurahanPJ" class="form-control" required autocomplete="off">
+              <input type="text" name="KelurahanPasien" class="form-control" required autocomplete="off">
             </div>
           </div>
           <div class="row">
             <div class="col-md-12 col-xl-6 mb-3 p-3">
               <label class="form-label">Kecamatan</label>
-              <input type="text" name="KecamatanPJ" class="form-control" required autocomplete="off">
+              <input type="text" name="KecamatanPasien" class="form-control" required autocomplete="off">
             </div>
             <div class="col-md-12 col-xl-6 mb-3 p-3">
               <label class="form-label">Kota</label>
-              <input type="text" name="KotaPJ" class="form-control" required autocomplete="off">
+              <input type="text" name="KotaPasien" class="form-control" required autocomplete="off">
             </div>
           </div>
-        </div>
 
-      </div>
-    </div>
-
-    <div class="card my-2">
-      <div class="card-footer text-end">
-        <div class="d-flex">
-          <a href="#" onclick="generateFakerData()" class="btn btn-link">Generate Data (Dev)</a>
-          <button class="btn btn-primary ms-auto">Lanjut</button>
         </div>
       </div>
+
+      <div class="card my-2">
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-md-12 col-xl-6 mb-3 p-3">
+              <label class="form-label">Nama Penanggung Jawab</label>
+              <input type="text" name="NamaPJ" class="form-control" required autocomplete="off">
+            </div>
+            <div class="col-md-12 col-xl-6 mb-3 p-3">
+              <label class="form-label">No Telp</label>
+              <input type="number" class="form-control" name="NoTelp" id="NoTelp" required autocomplete="off">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-xl-6 mb-3 p-3">
+              <label class="form-label">Apakah alamat penanggung jawab sama dengan pasien?</label>
+              <div>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="AlamatPJPrompt" value="0" checked>
+                  <span class="form-check-label">Ya</span>
+                </label>
+                <label class="form-check form-check-inline mt-2">
+                  <input class="form-check-input" type="radio" name="AlamatPJPrompt" value="1">
+                  <span class="form-check-label">Tidak</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div id="AlamatPJ" style="display: none;">
+            <div class="row">
+              <div class="col-md-12 mb-3 p-3">
+                <label class="form-label">Alamat Penanggung Jawab</label>
+                <input type="text" class="form-control" name="AlamatPJ" autocomplete="off">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-xl-6 mb-3 p-3">
+                <label class="form-label">RT/RW</label>
+                <div class="input-icon mb-2">
+                  <input type="text" name="RTRWPJ" class="form-control" data-mask="000/000" data-mask-visible="true" autocomplete="off"/>
+                </div>
+              </div>
+              <div class="col-md-12 col-xl-6 mb-3 p-3">
+                <label class="form-label">Kelurahan</label>
+                <input type="text" name="KelurahanPJ" class="form-control" autocomplete="off">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-xl-6 mb-3 p-3">
+                <label class="form-label">Kecamatan</label>
+                <input type="text" name="KecamatanPJ" class="form-control" autocomplete="off">
+              </div>
+              <div class="col-md-12 col-xl-6 mb-3 p-3">
+                <label class="form-label">Kota</label>
+                <input type="text" name="KotaPJ" class="form-control" autocomplete="off">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card my-2">
+        <div class="card-footer text-end">
+          <div class="d-flex">
+            @{
+              if (!ViewBag.WithFaker)
+              {
+                <a href="?withFaker=true" class="btn btn-link">Generate Data (Dev)</a>
+              }
+            }
+            <input type="submit" value="Lanjut" class="btn btn-primary ms-auto">
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </form>
   <script>
-    function generateFakerData() {
-      // Random data untuk isian teks
-      const data = {
-        NIK: 1234567890123456
-      }
-    }
-
     $(() => {
       $('input:radio[name="AlamatPJPrompt"]').change(evt => {
         const val = $(evt.target).filter(':checked').val().toString() === "1"
         $('#AlamatPJ').css('display', val ? 'block' : 'none')
+        const listName = [
+          'AlamatPJ', 'RTRWPJ', 'KelurahanPJ', 'KecamatanPJ', 'KotaPJ'
+        ]
+
+        if (val) {
+          listName.forEach(x => $(`input:text[name="${x}"]`).attr('required', 'true'))
+        } else {
+          listName.forEach(x => $(`input:text[name="${x}"]`).removeAttr('required'))
+        }
       })
     })
   </script>
